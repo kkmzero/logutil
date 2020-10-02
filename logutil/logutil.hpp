@@ -23,8 +23,8 @@
  */
 
 
-#ifndef __LOGUTIL_LOGUTIL_HPP
-#define __LOGUTIL_LOGUTIL_HPP
+#ifndef __LOGUTIL__LOGUTIL_HPP
+#define __LOGUTIL__LOGUTIL_HPP
 
 #include <iostream>
 #include <string>
