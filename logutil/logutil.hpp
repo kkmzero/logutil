@@ -32,17 +32,17 @@
 
 #ifdef LOGUTIL_USE_INFO
 #   define LOGUTIL_VERSION_MAJOR    1
-#   define LOGUTIL_VERSION_MINOR    0
+#   define LOGUTIL_VERSION_MINOR    1
 #   define LOGUTIL_VERSION_PATCH    0
-#   define LOGUTIL_VERSION_STRING  "1.0.0"
+#   define LOGUTIL_VERSION_STRING  "1.1.0"
 #   define LOGUTIL_VERSION_MAKE    (((LOGUTIL_VERSION_MAJOR) << 22) | ((LOGUTIL_VERSION_MINOR) << 12) | (LOGUTIL_VERSION_PATCH))
 #endif
 
-std::fstream filehandle{};
+static std::fstream filehandle{};
 
 
 namespace logutil {
-    bool file_open(std::string filename) {
+    inline bool file_open(std::string filename) {
         if (!filehandle.is_open()) {
             filehandle.open(filename.c_str(), std::ios_base::app | std::ios::out);
 
@@ -54,7 +54,7 @@ namespace logutil {
         return false;
     }
 
-    bool file_close() {
+    inline bool file_close() {
         if (filehandle.is_open()) {
             filehandle.close();
             return true;
@@ -62,7 +62,7 @@ namespace logutil {
         return false;
     }
 
-    bool file_clear(std::string filename) {
+    inline bool file_clear(std::string filename) {
         if (!filehandle.is_open()) {
             filehandle.open(filename.c_str(), std::ios_base::out | std::ios::trunc);
             filehandle.close();
@@ -71,14 +71,14 @@ namespace logutil {
         return false;
     }
 
-    void write(std::string text) {
+    inline void write(std::string text) {
         if (filehandle.is_open()) {
             filehandle << text << "\n";
         }
         return;
     }
 
-    void write_to_file(std::string text, std::string filename) {
+    inline void write_to_file(std::string text, std::string filename) {
         if (!filehandle.is_open()) {
             filehandle.open(filename.c_str(), std::ios_base::app | std::ios::out);
             filehandle << text << "\n";
@@ -90,7 +90,7 @@ namespace logutil {
         return;
     }
 
-    void check_function(std::string function, std::string file, int line) {
+    inline void check_function(std::string function, std::string file, int line) {
         std::string code = "Error in Function: " + function + " in file: " + file;
         code += " on line " + std::to_string(line) + "\n";;
 
