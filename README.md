@@ -32,4 +32,4 @@ If you need to clear the log file, you can use function ```file_clear("filename.
 
 ### Checking for version
 
-In case you need check logutil version in your program, you have to define ```LOGUTIL_USE_INFO``` before including logutil file. 
+In case you need check logutil version in your program, you have to define ```LOGUTIL_USE_INFO``` before including logutil header file. 
