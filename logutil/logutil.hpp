@@ -30,13 +30,11 @@
 #include <string>
 #include <fstream>
 
-#ifdef LOGUTIL_USE_INFO
-#   define LOGUTIL_VERSION_MAJOR    2
-#   define LOGUTIL_VERSION_MINOR    0
-#   define LOGUTIL_VERSION_PATCH    0
-#   define LOGUTIL_VERSION_STRING  "2.0.0"
-#   define LOGUTIL_VERSION_MAKE    (((LOGUTIL_VERSION_MAJOR) << 22) | ((LOGUTIL_VERSION_MINOR) << 12) | (LOGUTIL_VERSION_PATCH))
-#endif
+#define LOGUTIL_VERSION_MAJOR    2
+#define LOGUTIL_VERSION_MINOR    0
+#define LOGUTIL_VERSION_PATCH    0
+#define LOGUTIL_VERSION_STRING  "2.0.0"
+#define LOGUTIL_VERSION_MAKE    (((LOGUTIL_VERSION_MAJOR) << 22) | ((LOGUTIL_VERSION_MINOR) << 12) | (LOGUTIL_VERSION_PATCH))
 
 static std::fstream filehandle{};
 
