@@ -1,7 +1,7 @@
 /*
  * Logutil: Utility for creating log files in C++ projects.
  *
- * Copyright (c) 2020 Ivan Kmeťo
+ * Copyright (c) 2020 - 2022, Ivan Kmeťo
  *
  * This software is provided 'as-is', without any express or implied
  * warranty. In no event will the authors be held liable for any damages
@@ -31,10 +31,10 @@
 #include <fstream>
 
 #ifdef LOGUTIL_USE_INFO
-#   define LOGUTIL_VERSION_MAJOR    1
-#   define LOGUTIL_VERSION_MINOR    1
+#   define LOGUTIL_VERSION_MAJOR    2
+#   define LOGUTIL_VERSION_MINOR    0
 #   define LOGUTIL_VERSION_PATCH    0
-#   define LOGUTIL_VERSION_STRING  "1.1.0"
+#   define LOGUTIL_VERSION_STRING  "2.0.0"
 #   define LOGUTIL_VERSION_MAKE    (((LOGUTIL_VERSION_MAJOR) << 22) | ((LOGUTIL_VERSION_MINOR) << 12) | (LOGUTIL_VERSION_PATCH))
 #endif
 
@@ -42,6 +42,13 @@ static std::fstream filehandle{};
 
 
 namespace logutil {
+    inline bool is_file_open() {
+        if (filehandle.is_open()) {
+            return true;
+        }
+        return false;
+    }
+
     inline bool file_open(std::string filename) {
         if (!filehandle.is_open()) {
             filehandle.open(filename.c_str(), std::ios_base::app | std::ios::out);
