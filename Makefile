@@ -1,6 +1,6 @@
 # Logutil: Utility for creating log files in C++ projects.
 #
-# Copyright (c) 2020 Ivan Kmeťo
+# Copyright (c) 2020 - 2022, Ivan Kmeťo
 #
 # This software is provided 'as-is', without any express or implied
 # warranty. In no event will the authors be held liable for any damages
@@ -22,12 +22,14 @@
 
 
 DEST_PATH=/usr/local/include
+MAN_PATH = /usr/share/man/man1
 
 install:
 	cp logutil/logutil.hpp $(DEST_PATH)/logutil
+	cp man/logutil.1 $(MAN_PATH)/logutil.1
 
 
 PHONY: uninstall
 
 uninstall:
-	rm -rf $(DEST_PATH)/logutil
+	rm -rf $(DEST_PATH)/logutil $(MAN_PATH)/logutil.1
