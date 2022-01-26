@@ -41,19 +41,14 @@ static std::fstream filehandle{};
 
 namespace logutil {
     inline bool is_file_open() {
-        if (filehandle.is_open()) {
-            return true;
-        }
-        return false;
+        return filehandle.is_open() ? true : false;
     }
 
     inline bool file_open(std::string filename) {
         if (!filehandle.is_open()) {
             filehandle.open(filename.c_str(), std::ios_base::app | std::ios::out);
-
             std::ios_base::sync_with_stdio(false);
             filehandle.imbue(std::locale(""));
-
             return true;
         }
         return false;
@@ -67,32 +62,32 @@ namespace logutil {
         return false;
     }
 
-    inline bool file_clear(std::string filename) {
-        if (!filehandle.is_open()) {
-            filehandle.open(filename.c_str(), std::ios_base::out | std::ios::trunc);
-            filehandle.close();
+    inline bool write(std::string text) {
+        if (filehandle.is_open()) {
+            filehandle << text << "\n";
             return true;
         }
         return false;
     }
 
-    inline void write(std::string text) {
+    inline bool file_clear(std::string filename) {
         if (filehandle.is_open()) {
-            filehandle << text << "\n";
+            file_close();
         }
-        return;
+
+        filehandle.open(filename.c_str(), std::ios_base::out | std::ios::trunc);
+        filehandle.close();
+        return true;
     }
 
-    inline void write_to_file(std::string text, std::string filename) {
+    inline bool write_to_file(std::string text, std::string filename) {
         if (!filehandle.is_open()) {
-            filehandle.open(filename.c_str(), std::ios_base::app | std::ios::out);
-            filehandle << text << "\n";
-            filehandle.close();
+            file_open(filename);
         }
+
         filehandle << text << "\n";
         filehandle.close();
-
-        return;
+        return true;
     }
 
     inline void check_function(std::string function, std::string file, int line) {
