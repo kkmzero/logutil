@@ -22,14 +22,14 @@
 
 
 DEST_PATH=/usr/local/include
-MAN_PATH = /usr/share/man/man1
+MAN_PATH = /usr/share/man/man3
 
 install:
 	cp logutil/logutil.hpp $(DEST_PATH)/logutil
-	cp man/logutil.1 $(MAN_PATH)/logutil.1
+	cp man/logutil.3 $(MAN_PATH)/logutil.3
 
 
 PHONY: uninstall
 
 uninstall:
-	rm -rf $(DEST_PATH)/logutil $(MAN_PATH)/logutil.1
+	rm -rf $(DEST_PATH)/logutil $(MAN_PATH)/logutil.3
