@@ -10,7 +10,7 @@ You can use Logutil simply by copying ```logutil``` directory to your desired lo
 ```
 </br>
 
-Makefile is included in the repository and command ```make install``` copies file ```logutil.hpp``` to ```/usr/local/include/``` directory and renames it to ```logutil``` by default. Install path can be changed by editing variable ```DEST_PATH``` in Makefile. It is done this way so Logutil can be used in projects by including it with line:
+Makefile is included in the repository and command ```make install``` copies file ```logutil.hpp``` to ```/usr/local/include/``` directory and renames it to ```logutil``` by default. Install path can be changed by editing variable ```DEST_PATH``` in Makefile. It is done this way so Logutil can be used in projects by including it directly with line:
 ```c++
 #include <logutil>
 ```
@@ -19,12 +19,19 @@ Makefile is included in the repository and command ```make install``` copies fil
 
 ### Opening, Closing and Writing to a File
 
-For opening file use function ```logutil::file_open("filename.log");```</br>
-You are then able to write strings in specified file with function ```logutil::write("string goes here");```</br>
-Function ```logutil::file_close();``` closes the file handle.
+For opening file use function ```file_open```, then you are able to write strings in specified file with ```write``` function.</br>
+Function ```file_close``` closes the file handle at the end.
 
-Alternatively, you can use function ```write_to_file``` which takes care of opening and closing file handle automatically:</br>
-```logutil::write_to_file("string goes here", "filename.log");```
+**Example:**
+```c++
+logutil::file_open("filename.log");
+logutil::write("string goes here");
+logutil::file_close();
+```
+</br>Alternatively, you can use function ```write_to_file``` which takes care of opening and closing file handle automatically:</br>
+```c++
+logutil::write_to_file("string goes here", "filename.log");
+```
 
 ### Logging errors
 
@@ -32,7 +39,10 @@ You can use built-in macro ```__error(function)``` for debugging your code. It p
 
 ### Clearing the File
 
-If you need to clear the log file, you can use function ```file_clear("filename.log");```
+If you need to clear the log file completely, you can use function:
+```c++
+file_clear("filename.log");
+```
 
 ### Checking for version
 
