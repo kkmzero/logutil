@@ -14,18 +14,35 @@
 .\"   claim that you wrote the original software. If you use this software
 .\"   in a product, an acknowledgment in the product documentation would be
 .\"   appreciated but is not required.
-.\" 
+.\"
 .\" 2. Altered source versions must be plainly marked as such, and must not be
 .\"   misrepresented as being the original software.
 .\"
 .\" 3. This notice may not be removed or altered from any source distribution.
 
-.TH LOGUTIL "1" "January 2022" "Version 2.0.0" "User Commands"
+.TH LOGUTIL "3" "2022-01-26" "Version 2.0.0" "Library calls"
 .SH NAME
-Logutil \- Utility for creating log files in C++ projects.
+Logutil \- utility for creating log files in C++ projects
 .SH SYNOPSIS
 .B #include <logutil>
 .SH DESCRIPTION
-TODO
+.TP
+.B inline bool logutil::is_file_open()
+returns \fBTRUE\fP if internal \fBstd::fstream filehandle\fP is opened, otherwise returns \fBFALSE\fP.
+.TP
+.B inline bool logutil::file_open(std::string \fIfilename\fB)
+opens filehandle and returns \fBTRUE\fP, otherwise returns \fBFALSE\fP.
+.TP
+.B inline bool logutil::file_close()
+closes previously opened filehandle and returns \fBTRUE\fP, otherwise returns \fBFALSE\fP.
+.TP
+.B inline bool logutil::write(std::string \fItext\fP)
+writes text to file only if filehandle is opened and returns \fBTRUE\fP, otherwise returns \fBFALSE\fP.
+.TP
+.B inline bool logutil::file_clear(std::string \fIfilename\fB)
+clears the whole file and returns \fBTRUE\fP regardless whether filehandle was previously opened or not.
+.TP
+.B inline bool logutil::write_to_file(std::string \fItext\fB, std::string \fIfilename\fB)
+writes text to file and returns \fBTRUE\fP regardless whether filehandle was previously opened or not.
 .SH AUTHOR
 Written by Ivan Kmeťo.
