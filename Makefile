@@ -1,4 +1,4 @@
-# Logutil: Utility for creating log files in C++ projects.
+# Logutil: Library for creating log files in C++ projects.
 #
 # Copyright (c) 2020 - 2022, Ivan Kmeťo
 #
