@@ -1,4 +1,4 @@
-.\" Logutil: Utility for creating log files in C++ projects.
+.\" Logutil: Library for creating log files in C++ projects.
 .\"
 .\" Copyright (c) 2020 - 2022, Ivan Kmeťo
 .\"
@@ -20,29 +20,46 @@
 .\"
 .\" 3. This notice may not be removed or altered from any source distribution.
 
-.TH LOGUTIL "3" "2022-01-26" "Version 2.0.0" "Library calls"
+.TH LOGUTIL "3" "2022-01-31" "Version 2.0.0" "Library calls"
 .SH NAME
-Logutil \- utility for creating log files in C++ projects
+Logutil \- library for creating log files in C++ projects
 .SH SYNOPSIS
 .B #include <logutil>
+.TP
+.B inline bool logutil::is_file_open();
+.TP
+.B inline bool logutil::file_open(std::string \fIfilename\fB);
+.TP
+.B inline bool logutil::file_close();
+.TP
+.B inline bool logutil::write(std::string \fItext\fP);
+.TP
+.B inline bool logutil::file_clear(std::string \fIfilename\fB);
+.TP
+.B inline bool logutil::write_to_file(std::string \fItext\fB, std::string \fIfilename\fB);
+.TP
+.B inline bool check_function(std::string \fIfunction\fB, std::string \fIfile\fB, int \fIline\fB, std::string \fIfilename\fB);
 .SH DESCRIPTION
 .TP
-.B inline bool logutil::is_file_open()
+.B \fPFunction\fB is_file_open()
 returns \fBTRUE\fP if internal \fBstd::fstream filehandle\fP is opened, otherwise returns \fBFALSE\fP.
 .TP
-.B inline bool logutil::file_open(std::string \fIfilename\fB)
-opens filehandle and returns \fBTRUE\fP, otherwise returns \fBFALSE\fP.
+.B \fPFunction\fB file_open(\fIfilename\fB)
+opens the \fBfilehandle\fP and returns \fBTRUE\fP, otherwise returns \fBFALSE\fP.
 .TP
-.B inline bool logutil::file_close()
-closes previously opened filehandle and returns \fBTRUE\fP, otherwise returns \fBFALSE\fP.
+.B \fPFunction\fB file_close()
+closes previously opened \fBfilehandle\fP and returns \fBTRUE\fP, otherwise returns \fBFALSE\fP.
 .TP
-.B inline bool logutil::write(std::string \fItext\fP)
-writes text to file only if filehandle is opened and returns \fBTRUE\fP, otherwise returns \fBFALSE\fP.
+.B \fPFunction\fB write(\fItext\fP)
+writes text to file only if \fBfilehandle\fP is opened and returns \fBTRUE\fP, otherwise returns \fBFALSE\fP.
 .TP
-.B inline bool logutil::file_clear(std::string \fIfilename\fB)
-clears the whole file and returns \fBTRUE\fP regardless whether filehandle was previously opened or not.
+.B \fPFunction\fB file_clear(\fIfilename\fB)
+clears the whole file and returns \fBTRUE\fP regardless whether \fBfilehandle\fP was previously opened or not.
 .TP
-.B inline bool logutil::write_to_file(std::string \fItext\fB, std::string \fIfilename\fB)
-writes text to file and returns \fBTRUE\fP regardless whether filehandle was previously opened or not.
+.B \fPFunction\fB write_to_file(\fItext\fB, \fIfilename\fB)
+writes text to file and returns \fBTRUE\fP regardless whether \fBfilehandle\fP was previously opened or not.
+.TP
+.B \fPFunction\fB check_function(\fI__FUNCTION__\fB, \fI__FILE__\fB, \fI__LINE__\fB, \fIfilename\fB)
+writes message to file using \fBwrite_to_file\fP function and returns \fBTRUE\fP.
 .SH AUTHOR
 Written by Ivan Kmeťo.
