@@ -1,5 +1,5 @@
 /*
- * Logutil: Utility for creating log files in C++ projects.
+ * Logutil: Library for creating log files in C++ projects.
  *
  * Copyright (c) 2020 - 2022, Ivan Kmeťo
  *
@@ -26,7 +26,6 @@
 #ifndef __LOGUTIL__LOGUTIL_HPP
 #define __LOGUTIL__LOGUTIL_HPP
 
-#include <iostream>
 #include <string>
 #include <fstream>
 
@@ -90,21 +89,13 @@ namespace logutil {
         return true;
     }
 
-    inline void check_function(std::string function, std::string file, int line) {
-        std::string code = "Error in Function: " + function + " in file: " + file;
-        code += " on line " + std::to_string(line) + "\n";;
+    inline bool check_function(std::string function, std::string file, int line, std::string filename) {
+        std::string output = "Error in Function " + function + " in file: " + file
+                             + " on line " + std::to_string(line) + "\n";
 
-        std::cout << code;
-        write(code);
-
-        return;
+        write_to_file(output, filename);
+        return true;
     }
-
-}
-
-#define __error(function)\
-    if (function) {\
-    logutil::check_function(#function, __FILE__, __LINE__);\
 }
 
 
