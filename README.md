@@ -60,7 +60,7 @@ file_clear("filename.log");
 
 ### Checking for version
 
-Current version of Logutil is set in varios macros:
+Current version of Logutil is set in various macros:
 
 ```c++
 #define LOGUTIL_VERSION_MAJOR  (int)
