@@ -1,6 +1,6 @@
 # Logutil
 
-Library for creating log files in C++ projects, licensed under [zlib license](LICENSE). Tested on Linux, Windows and BSD operating systems.
+Library for creating log files in C++ projects, licensed under [zlib license](LICENSE). Tested with GCC, Clang and MSVC on Linux, BSD and Windows operating systems.
 
 ## Installation
 
