@@ -1,6 +1,6 @@
 # Logutil
 
-Library for creating log files in C++ projects, licensed under [zlib license](LICENSE). Tested with GCC, Clang and MSVC on Linux, BSD and Windows operating systems.
+Library for creating log files in C++ projects, licensed under [zlib license](LICENSE). Tested with GCC, Clang and MSVC on Linux, BSD, Solaris and Windows operating systems.
 
 ## Installation
 
@@ -10,7 +10,7 @@ You can use Logutil simply by copying ```logutil``` directory to your desired lo
 ```
 </br>
 
-Makefile is included in the repository and command ```make install``` copies file ```logutil.hpp``` to ```/usr/local/include/``` directory and renames it to ```logutil``` by default. Install path can be changed by editing variable ```DEST_PATH``` in Makefile. It is done this way so Logutil can be used in projects by including it directly without additional parameters/flags with line:
+Makefile is included in the repository and command ```make install``` copies file ```logutil.hpp``` to ```/usr/local/include/``` directory and renames it to ```logutil``` by default. Install path can be changed by editing variable ```DEST_PATH``` in Makefile. It is done this way so Logutil can be used in projects by including it directly without specific path:
 ```c++
 #include <logutil>
 ```
@@ -33,11 +33,11 @@ logutil::file_close();
 logutil::write_to_file("Hello, World!", "filename.log");
 ```
 
-### Controlling Filehandle
+### Filehandle Status
 
-Logutil uses one filehandle for file operations: ```static std::fstream filehandle{};```. You can check whether this filehandle is open or not with function ```is_file_open```.
+Logutil uses one filehandle for file operations: ```static std::fstream filehandle{};```. You can check whether this filehandle is open or not with function ```is_file_open``` which returns either true or false.
 
-### Logging errors
+### Logging Errors
 
 If you need more detailed debugging and logging, you can use built-in function ```check_function```.
 
@@ -46,7 +46,7 @@ If you need more detailed debugging and logging, you can use built-in function `
 logutil::check_function(__FUNCTION__, __FILE__, __LINE__, "filename.log");
 ```
 
-with example output:
+which should produce output similar to this one:
 ```
 Error in Function __testfunc in file: test.cpp on line 20
 ```
@@ -55,10 +55,10 @@ Error in Function __testfunc in file: test.cpp on line 20
 
 If you need to clear the log file completely, you can use function:
 ```c++
-file_clear("filename.log");
+logutil::file_clear("filename.log");
 ```
 
-### Checking for version
+### Checking for Version
 
 Current version of Logutil is set in various macros:
 
