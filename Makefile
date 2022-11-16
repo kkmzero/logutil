@@ -22,7 +22,7 @@
 
 
 DEST_PATH=/usr/local/include
-MAN_PATH = /usr/share/man/man3
+MAN_PATH=/usr/share/man/man3
 
 install:
 	cp logutil/logutil.hpp $(DEST_PATH)/logutil
